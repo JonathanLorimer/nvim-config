@@ -1,0 +1,34 @@
+{
+  "languageserver": {
+    "haskell": {
+      "command": "stack",
+      "args": [
+        "exec",
+        "ghcide",
+        "--",
+        "--lsp"
+      ],
+      "rootPatterns": [
+        ".stack.yaml",
+        "cabal.config",
+        "package.yaml"
+      ],
+      "filetypes": [
+      ],
+      "initializationOptions": {
+        "languageServerHaskell": {
+          "hlintOn": false,
+          "maxNumberOfProblems": 10,
+          "completionSnippetsOn": false
+        }
+      }
+    }
+  },
+  "coc.preferences.rootPatterns":[".git", "package.yaml", "*.cabal"],
+  "snippets.ultisnips.directories": [
+    "~/.config/nvim/"
+  ],
+  "yank.enableCompletion": false,
+  "coc.preferences.hoverTarget": "float",
+  "list.source.files.command": "fd"
+}
