@@ -24,6 +24,8 @@ Plug 'rbgrouleff/bclose.vim' "Peer dependency of ranger
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-clojure-static'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
