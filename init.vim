@@ -26,9 +26,16 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-static'
+Plug 'tpope/vim-commentary'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nbouscal/vim-stylish-haskell'
+
+" Purescript
+Plug 'purescript-contrib/purescript-vim'
+Plug 'FrigoEU/psc-ide-vim'
 
 " SML
 Plug 'jez/vim-better-sml'
@@ -36,7 +43,6 @@ Plug 'jez/vim-better-sml'
 " JS/TS Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/syntastic'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'leafgarland/typescript-vim'
 
 call plug#end()
@@ -44,11 +50,11 @@ call plug#end()
 "------------------------------------------------------------------------------
                               "Coc
 "------------------------------------------------------------------------------
-
 " Tab completion
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ "\<TAB>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Documentation
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -60,6 +66,12 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Highlight symbol under cursor hold
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -76,8 +88,12 @@ augroup en
 
 command! -nargs=0 Format :call CocAction('format')
 
-" Status line
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"Misc
+set updatetime=300
+set cmdheight=2
+set shortmess+=c
+set signcolumn=yes
+
 "------------------------------------------------------------------------------
                               " Haskell
 "------------------------------------------------------------------------------
@@ -90,7 +106,8 @@ let g:haskell_indent_case = 2
 let g:haskell_indent_where = 6
 
 au filetype haskell nnoremap <silent> <leader>l :let a='{-# LANGUAGE  #-}'\|put! = a <cr> l11 <Insert>
-au filetype haskell nnoremap <silent> <leader>c 0<Insert>--<Space>
+
+autocmd FileType haskell setlocal commentstring=--\ %s
 
 "------------------------------------------------------------------------------
                               " Javascript/Typescript
@@ -101,9 +118,10 @@ autocmd FileType typescript :set makeprg=tsc
 "
 
 "------------------------------------------------------------------------------
-                               " General
+                              " General
 "------------------------------------------------------------------------------
 
+let mapleader = "\<Space>"
 
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -114,7 +132,7 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
-
+" Highlight 81st column
 highlight ColorColumn ctermbg=red
 call matchadd('ColorColumn', '\%81v', 100)
 
@@ -155,7 +173,7 @@ endfunction
 call ToggleBackground()
 
 " Mappings
-nmap     td OTODO(jonathan): <ESC>gccA
+nmap     <leader>t ITODO(jonathan): <ESC>gcc4ea
 nnoremap <S-Up> :m-2<CR>
 nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
