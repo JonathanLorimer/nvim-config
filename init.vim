@@ -27,6 +27,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-static'
 Plug 'tpope/vim-commentary'
+" Plug 'guns/vim-sexp'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
