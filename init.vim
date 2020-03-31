@@ -20,13 +20,13 @@ Plug 'rbgrouleff/bclose.vim' "Peer dependency of ranger
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/syntastic'
 Plug 'arcticicestudio/nord-vim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
-Plug 'nbouscal/vim-stylish-haskell'
 
 " Purescript
 Plug 'purescript-contrib/purescript-vim'
@@ -139,6 +139,17 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
+" Vim Tab Management
+nnoremap <leader>h gT
+nnoremap <leader>l gt
+nnoremap <leader>tt :RangerNewTab<CR>
+
+" Fuzzy Find
+nnoremap fzl :Lines<CR>
+nnoremap fzb :BLines<CR>
+nnoremap fzf :Files<CR>
+nnoremap fzg :GFiles?<CR>
+
 " Highlight 81st column
 highlight ColorColumn ctermbg=red
 call matchadd('ColorColumn', '\%81v', 100)
@@ -161,7 +172,7 @@ filetype plugin indent on
 
 
 " Mappings
-nmap     <leader>t ITODO(jonathan): <ESC>gcc4ea
+nmap     <leader>to ITODO(jonathan): <ESC>gcc4ea
 nnoremap <S-Up> :m-2<CR>
 nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
