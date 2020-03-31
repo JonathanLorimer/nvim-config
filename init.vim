@@ -41,11 +41,9 @@ Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
-
 "Color Theme
 syntax      enable
 colorscheme nord
-set guifont=FiraCode:h13
 
 " Airline Theme
 let g:airline_theme='nord'
@@ -146,7 +144,8 @@ nnoremap <leader>l gt
 nnoremap <leader>tt :RangerNewTab<CR>
 
 " Fuzzy Find
-nnoremap fzl :Lines<CR>
+let g:fzg_buffers_jump = 1
+nnoremap fzt :Lines<CR>
 nnoremap fzb :BLines<CR>
 nnoremap fzf :Files<CR>
 nnoremap fzg :GFiles?<CR>
