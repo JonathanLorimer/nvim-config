@@ -41,6 +41,7 @@ Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
+
 "Color Theme
 syntax      enable
 colorscheme nord
